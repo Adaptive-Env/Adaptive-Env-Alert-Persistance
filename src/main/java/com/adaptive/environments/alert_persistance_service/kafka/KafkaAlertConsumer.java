@@ -41,7 +41,6 @@ public class KafkaAlertConsumer {
 
             AlertRecord alertRecord = AlertRecord.builder()
                     .deviceId(alert.getDeviceId())
-                    .type(alert.getType())
                     .severity(alert.getSeverity())
                     .timestamp(alert.getTimestamp())
                     .description(alert.getDescription())
@@ -50,7 +49,7 @@ public class KafkaAlertConsumer {
             repository.save(alertRecord);
 
             log.info("[Kafka] Alert saved for device: {}, type: {}, severity: {}",
-                    alert.getDeviceId(), alert.getType(), alert.getSeverity());
+                    alert.getDeviceId(), alert.getDescription(), alert.getSeverity());
 
             meterRegistry.counter("iot.alerts.persisted", "severity", alert.getSeverity().name()).increment();
 
