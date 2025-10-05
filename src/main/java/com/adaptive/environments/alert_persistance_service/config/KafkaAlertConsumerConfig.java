@@ -33,6 +33,7 @@ public class KafkaAlertConsumerConfig {
 
         props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
 
+
         ReceiverOptions<String, AlertRecord> options = ReceiverOptions.create(props);
         return options.subscription(java.util.List.of("iot.alerts"));
     }
