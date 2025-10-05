@@ -51,7 +51,7 @@ public class KafkaAlertConsumer {
             log.info("[Kafka] Alert saved for device: {}, type: {}, severity: {}",
                     alert.getDeviceId(), alert.getDescription(), alert.getSeverity());
 
-            meterRegistry.counter("iot.alerts.persisted", "severity", alert.getSeverity().name()).increment();
+            meterRegistry.counter("iot.alerts.persist", "severity", alert.getSeverity().name()).increment();
 
         } catch (Exception e) {
             log.error("[Kafka] Error while saving alert to DB", e);
